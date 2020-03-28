@@ -1,0 +1,19 @@
+/* jq-pagination */
+div.jq-pagination {  }
+br.jq-pagination-clear { clear:both; }
+
+/* jq-pagination-left */ 
+div.jq-pagination-left { float:left; padding:0; margin:0; }
+span.jq-pagination-total {  }
+span.jq-pagination-range {  }
+
+/* jq-pagination-right */
+div.jq-pagination-right { float:right; padding:0; margin:0; }
+div.jq-pagination-prev { float:left; margin:0 0 0 3px; padding:0 8px; border:solid 1px #ccc; background-color:#eee; }
+div.jq-pagination-prev a { display:block; text-decoration:none; color:#000; }
+ul.jq-pagination-num { float:left; padding:0; margin:0; }
+ul.jq-pagination-num li { float:left; list-style:none; margin:0 0 0 3px; padding:0; border:solid 1px #ccc; background-color:#eee; }
+ul.jq-pagination-num li a.pageNow { background-color:#aaa; }
+ul.jq-pagination-num li a { display:block; width:23px; text-align:center; text-decoration:none; color:#000; }
+div.jq-pagination-next { float:left; margin:0 0 0 3px; padding:0 8px; border:solid 1px #ccc; background-color:#eee; }
+div.jq-pagination-next a { display:block; text-decoration:none; color:#000; }

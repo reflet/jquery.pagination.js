@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Pagination</title>
+  <link rel="stylesheet" href="./css/pagination.css" type="text/css" />
+  <style type="text/css">
+    body, table { font-size:12px; line-height:24px; }
+    #list { width:700px; }
+    #jq-list table { width:100%; margin:10px 0; border-left:solid 1px #ccc; border-top:solid 1px #ccc; }
+    #jq-list th, td { padding:0 5px; border-right:solid 1px #ccc; border-bottom:solid 1px #ccc; }
+  </style>
+</head>
+<body>
+
+  <div id="list">
+    <div class="jq-pagination-box"></div>
+    <div id="jq-list"></div>
+    <div class="jq-pagination-box"></div>
+  </div>
+
+  <script type="text/javascript" src="./js/lib/jquery-1.7.2.js"></script>
+  <script type="text/javascript" src="./js/jquery.pagination.js"></script>
+  <script type="text/javascript">
+    (function($){
+      var data  = [
+        {id:'0001', name: 'テスト 太郎', sex: '男'},
+        {id:'0002', name: 'テスト 花子', sex: '女'},
+        {id:'0003', name: 'テスト 三郎', sex: '男'},
+        {id:'0004', name: 'テスト 四郎', sex: '男'},
+        {id:'0005', name: 'テスト 五郎', sex: '男'},
+        {id:'0006', name: 'テスト 六郎', sex: '男'},
+        {id:'0007', name: 'テスト 奈々子', sex: '女'},
+        {id:'0008', name: 'テスト 八重子', sex: '女'},
+      ];
+
+      var render = function (list) {
+        var table = $('<table cellpadding="0" cellspacing="0"></table>'),
+            tbody = $('<tbody>');
+        table.append($('<colgroup>')
+            .append('<col width="150"/>')
+            .append('<col width="450"/>')
+            .append('<col width="100"/>')
+        );
+        for (var i = 0; i < list.length; ++i) {
+          tbody.append($('<tr></tr>')
+              .append('<td>' + list[i]['id'] + '</td>')
+              .append('<td>' + list[i]['name'] + '</td>')
+              .append('<td>' + list[i]['sex'] + '</td>')
+          );
+        }
+        return table.append(tbody);
+      };
+
+      var show = function (p) {
+        p = parseInt(p, 10) || 1;
+        var list;
+        switch (p) {
+          case 1: list = render(data.slice(0, 2)); break;
+          case 2: list = render(data.slice(2, 4)); break;
+          case 3: list = render(data.slice(4, 6)); break;
+          case 4: list = render(data.slice(6, 8)); break;
+        }
+        $('#jq-list').html(list);
+      };
+
+      $(function () {
+        $('div.jq-pagination-box').pagination({
+          total      : data.length,
+          limit      : 2,
+          pageNum    : 3,
+          current    : 1,
+          initProcess: function (page, limit) {
+            show();
+          },
+          callback   : function (page, limit) {
+            show(page);
+          }
+        });
+      });
+
+    })(jQuery);
+  </script>
+</body>
+</html>
